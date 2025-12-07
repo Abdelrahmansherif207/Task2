@@ -1,0 +1,276 @@
+:root {
+    --primary: #4f46e5; /* Indigo 600 */
+    --primary-hover: #4338ca; /* Indigo 700 */
+    --bg-color: #f8fafc; /* Slate 50 */
+    --surface: #ffffff;
+    --text-main: #1e293b; /* Slate 800 */
+    --text-muted: #64748b; /* Slate 500 */
+    --border: #e2e8f0; /* Slate 200 */
+    --success: #10b981; /* Emerald 500 */
+    --danger: #ef4444; /* Red 500 */
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --radius: 12px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.5;
+    padding: 20px;
+}
+
+.app-container {
+    max-width: 600px;
+    margin: 0 auto;
+    background: var(--surface);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 24px;
+    min-height: 80vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+header h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--primary);
+}
+
+header p {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* Tabs */
+.tabs {
+    display: flex;
+    background: var(--bg-color);
+    padding: 4px;
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+}
+
+.tab-btn {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: calc(var(--radius) - 4px);
+    transition: all 0.2s ease;
+}
+
+.tab-btn.active {
+    background: var(--surface);
+    color: var(--primary);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+}
+
+/* Views */
+.view {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.view.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Inputs */
+.input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.budget-inputs {
+    flex-direction: column;
+}
+
+input, select {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: var(--primary);
+}
+
+#task-input {
+    flex: 1;
+}
+
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-primary:hover {
+    background: var(--primary-hover);
+}
+
+/* Lists */
+.list-container {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+    background: var(--bg-color);
+    border-radius: 8px;
+    border: 1px solid transparent;
+    transition: all 0.2s;
+}
+
+.list-item:hover {
+    border-color: var(--border);
+}
+
+.list-item.completed span {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.delete-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.delete-btn:hover {
+    color: var(--danger);
+    background: #fee2e2;
+}
+
+/* Budget Cards */
+.summary-cards {
+    margin-bottom: 24px;
+}
+
+.card {
+    background: linear-gradient(135deg, var(--primary), #6366f1);
+    color: white;
+    padding: 20px;
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.card h3 {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 4px;
+}
+
+.card p {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.card-row {
+    display: flex;
+    gap: 12px;
+}
+
+.card-row .card {
+    flex: 1;
+    margin-bottom: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+.card-row .card h3 {
+    color: var(--text-muted);
+}
+
+.income-card p {
+    color: var(--success);
+    font-size: 1.2rem;
+}
+
+.expense-card p {
+    color: var(--danger);
+    font-size: 1.2rem;
+}
+
+/* Transaction List Items */
+.transaction-item {
+    border-left: 4px solid transparent;
+}
+
+.transaction-item.income {
+    border-left-color: var(--success);
+}
+
+.transaction-item.expense {
+    border-left-color: var(--danger);
+}
+
+.transaction-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction-amount {
+    font-weight: 700;
+}
+
+.income .transaction-amount {
+    color: var(--success);
+}
+
+.expense .transaction-amount {
+    color: var(--danger);
+}
+
+.empty-state {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 20px;
+    font-style: italic;
+}
+
+.hidden {
+    display: none;
+}
